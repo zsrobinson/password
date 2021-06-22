@@ -2,69 +2,50 @@ function $(id) {
 	return document.getElementById(id);
 }
 
-$("button-copy").addEventListener("click", function() {
-	let selector = $("text-password")
+$("generate-button-copy").addEventListener("click", function () {
+	let selector = $("generate-text-password");
 	selector.focus();
 	selector.select();
 	selector.setSelectionRange(0, 99999); // for mobile
 	document.execCommand("copy");
-})
+});
 
-$("button-regenerate").addEventListener("click", function () {
-	password = generatePassword();
+$("generate-button-regenerate").addEventListener("click", function () {
+	pass = generatePassword();
 
-	let strengthText, strengthColor;
-	switch (password.score) {
-		case 0:
-			strengthText = "Way Too Guessable";
-			strengthColor = "is-danger";
-			break;
-		case 1:
-			strengthText = "Very Guessable";
-			strengthColor = "is-danger";
-			break;
-		case 2:
-			strengthText = "Somewhat Guessable";
-			strengthColor = "is-danger";
-			break;
-		case 3:
-			strengthText = "Pretty Safe";
-			strengthColor = "is-success";
-			break;
-		case 4:
-			strengthText = "Very Safe";
-			strengthColor = "is-success";
-			break;
-	}
+	removeColor("generate-text-password");
+	removeColor("generate-text-password-strength");
 
-	for (let i = 0; i < $("text-password-strength").classList.length; i++) {
-		if ($("text-password-strength").classList[i].startsWith("is-")) {
-			$("text-password-strength").classList.remove($("text-password-strength").classList[i])
-		}
-	}
+	$("generate-text-password").value = pass.password;
+	$("generate-text-password").classList.add(pass.strengthColor);
+	$("generate-text-password-strength").innerHTML = pass.strengthText;
+	$("generate-text-password-strength").classList.add(pass.strengthColor);
+});
 
-	for (let i = 0; i < $("text-password").classList.length; i++) {
-		if ($("text-password").classList[i].startsWith("is-")) {
-			$("text-password").classList.remove($("text-password").classList[i])
-		}
-	}
+$("strength-button-check").addEventListener("click", function () {
+	pass = scoreToStr(zxcvbn($("strength-text-password").value));
 
-	$("text-password").value = password.password;
-	$("text-password-strength").innerHTML = strengthText;
-	$("text-password-strength").classList.add(strengthColor);
-	$("text-password").classList.add(strengthColor);
+	removeColor("strength-text-password");
+	removeColor("strength-text-password-strength");
+
+	$("strength-text-password").value = pass.password;
+	$("strength-text-password").classList.add(pass.strengthColor);
+	$("strength-text-password-strength").innerHTML = pass.strengthText;
+	$("strength-text-password-strength").classList.add(pass.strengthColor);
+
+
 });
 
 function generatePassword() {
 	// get password options
 	let options = {
-		length: $("text-length").value,
-		upper: $("check-upper").checked,
-		lower: $("check-lower").checked,
-		numbers: $("check-numbers").checked,
-		symbols: $("check-symbols").checked,
-		similar: $("check-similar").checked,
-		extraSymbols: $("check-extraSymbols").checked,
+		length: $("generate-text-length").value,
+		upper: $("generate-check-upper").checked,
+		lower: $("generate-check-lower").checked,
+		numbers: $("generate-check-numbers").checked,
+		symbols: $("generate-check-symbols").checked,
+		similar: $("generate-check-similar").checked,
+		extraSymbols: $("generate-check-extraSymbols").checked,
 	};
 
 	// make character set
@@ -90,11 +71,51 @@ function generatePassword() {
 		});
 	}
 
+	if (characterSet.length == 0) {
+		return { password: "", strengthText: "Please select at least one character type." };
+	}
+
 	// generate the password
 	let password = "";
 	for (let i = 0; i < options.length; i++) {
 		password += characterSet[Math.floor(Math.random() * characterSet.length)];
 	}
 
-	return zxcvbn(password);
+	return scoreToStr(zxcvbn(password));
+}
+
+function scoreToStr(zxcvbn) {
+	let text, color;
+	switch (zxcvbn.score) {
+		case 0:
+			zxcvbn.strengthText = "Way Too Guessable";
+			zxcvbn.strengthColor = "is-danger";
+			break;
+		case 1:
+			zxcvbn.strengthText = "Very Guessable";
+			zxcvbn.strengthColor = "is-danger";
+			break;
+		case 2:
+			zxcvbn.strengthText = "Somewhat Guessable";
+			zxcvbn.strengthColor = "is-danger";
+			break;
+		case 3:
+			zxcvbn.strengthText = "Pretty Safe";
+			zxcvbn.strengthColor = "is-success";
+			break;
+		case 4:
+			zxcvbn.strengthText = "Very Safe";
+			zxcvbn.strengthColor = "is-success";
+			break;
+	}
+	return zxcvbn;
+}
+
+function removeColor(id) {
+	colorList = ["is-primary", "is-link", "is-info", "is-success", "is-warning", "is-danger"];
+	for (let i = 0; i < $(id).classList.length; i++) {
+		if (colorList.includes($(id).classList[i])) {
+			$(id).classList.remove($(id).classList[i]);
+		}
+	}
 }

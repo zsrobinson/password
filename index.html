@@ -17,75 +17,110 @@
 					<span class="icon">
 						<i class="fas fa-key"></i>
 					</span>
-					Password Generator
+					Password Utilities
 				</h1>
 				<p class="subtitle">Created by Zachary Robinson</p>
+				
+				<div class="columns">
+					<div class="column">
 
-				<div class="field">
-					<label class="label">Length</label>
-					<div class="control">
-					 	<input class="input" type="text" placeholder="20" id="text-length" value="20" />
+						<h2 class="heading">Password Generator</h2>
+
+						<div class="block">
+							<div class="field">
+								<label class="label">Length</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="Enter the length of your desired password..." id="generate-text-length" value="16" />
+								</div>
+							</div>
+						</div>
+		
+						<div class="block">
+							<label class="checkbox">
+								<input type="checkbox" id="generate-check-upper" checked />
+								Include Uppercase Letters ( A-Z )
+							</label><br>
+							<label class="checkbox">
+								<input type="checkbox" id="generate-check-lower" checked />
+								Include Lowercase Letters ( a-z )
+							</label><br>
+							<label class="checkbox">
+								<input type="checkbox" id="generate-check-numbers" checked />
+								Include Numbers ( 0-9 )
+							</label><br>
+							<label class="checkbox">
+								<input type="checkbox" id="generate-check-symbols" checked />
+								Include Common Symbols ( !@#$%^&*-_=+? )
+							</label>
+						</div>
+		
+						<div class="block">
+							<label class="checkbox">
+								<input type="checkbox" id="generate-check-similar" />
+								Exclude Similar Characters ( iIl1oO0 )
+							</label><br>
+							<label class="checkbox">
+								<input type="checkbox" id="generate-check-extraSymbols" />
+								Include All ASCII Symbols
+							</label><br>
+						</div>
+						
+						<div class="block">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" value="" id="generate-text-password" readonly />
+								</div>
+								<p class="help" id="generate-text-password-strength"></p>
+							</div>
+			
+							<div class="field is-grouped">
+								<div class="control">
+									<button class="button is-link" id="generate-button-regenerate">
+										<span class="icon">
+											<i class="fas fa-sync-alt"></i>
+										</span>
+										<span>Generate</span>
+									</button>
+								</div>
+								<div class="control">
+									<button class="button is-link is-light" id="generate-button-copy">
+										<span class="icon">
+											<i class="far fa-copy"></i>
+										</span>
+										<span>Copy</span>
+									</button>
+								</div>
+							</div>
+						</div>
+
 					</div>
-				</div>
+					<div class="column">
 
-				<div class="block">
-					<label class="checkbox">
-						<input type="checkbox" id="check-upper" checked />
-						Include Uppercase Letters ( A-Z )
-					</label><br>
-					<label class="checkbox">
-						<input type="checkbox" id="check-lower" checked />
-						Include Lowercase Letters ( a-z )
-					</label><br>
-					<label class="checkbox">
-						<input type="checkbox" id="check-numbers" checked />
-						Include Numbers ( 0-9 )
-					</label><br>
-					<label class="checkbox">
-						<input type="checkbox" id="check-symbols" checked />
-						Include Common Symbols ( !@#$%^&*-_=+? )
-					</label>
-				</div>
+						<h2 class="heading">Strength Checker</h2>
 
-				<div class="block">
-					<label class="checkbox">
-						<input type="checkbox" id="check-similar" />
-						Exclude Similar Characters ( iIl1oO0 )
-					</label><br>
-					<label class="checkbox">
-						<input type="checkbox" id="check-extraSymbols" />
-						Include All ASCII Symbols
-					</label><br>
-				</div>
+						<div class="block">
+							<div class="field">
+								<label class="label">Password</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="Enter a password..." id="strength-text-password" />
+								</div>
+								<p class="help" id="strength-text-password-strength"></p>
+							</div>
 
-				<div class="field">
-					<div class="control">
-						<input class="input" type="text" value="" id="text-password" readonly />
-					</div>
-					<p class="help" id="text-password-strength"></p>
-				</div>
+							<div class="control">
+								<button class="button is-link" id="strength-button-check">
+									<span class="icon">
+										<i class="fas fa-search"></i>
+									</span>
+									<span>Check Strength</span>
+								</button>
+							</div>
+						</div>
 
-				<div class="field is-grouped">
-					<div class="control">
-						<button class="button is-link" id="button-regenerate">
-							<span class="icon">
-								<i class="fas fa-sync-alt"></i>
-							</span>
-							<span>Generate</span>
-						</button>
-					</div>
-					<div class="control">
-						<button class="button is-link is-light" id="button-copy">
-							<span class="icon">
-								<i class="far fa-copy"></i>
-							</span>
-							<span>Copy</span>
-						</button>
 					</div>
 				</div>
 
 				
-
 			</div>
 		</section>
 	</body>
