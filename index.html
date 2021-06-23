@@ -32,7 +32,7 @@
 									<input
 										class="input"
 										type="text"
-										placeholder="Enter the length of your desired password..."
+										placeholder="How long do you want your password?"
 										id="generate-text-length"
 										value="16"
 									/>
@@ -98,6 +98,65 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="column">
+						<h2 class="heading">Passphrase Generator</h2>
+
+						<div class="block">
+							<div class="field">
+								<label class="label">Word Count</label>
+								<div class="control">
+									<input
+										class="input"
+										type="text"
+										placeholder="How many words do you want in your passphrase?"
+										id="generatephrase-text-length"
+										value="4"
+									/>
+								</div>
+							</div>
+						</div>
+
+						<div class="block">
+							<label class="checkbox">
+								<input type="checkbox" id="generatephrase-check-capitalize" />
+								Capitalize Some Words </label
+							><br />
+							<label class="checkbox">
+								<input type="checkbox" id="generatephrase-check-l33t" />
+								L33t Speak Some Words </label
+							><br />
+						</div>
+
+						<div class="block">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" value="" id="generatephrase-text-password" readonly />
+								</div>
+								<p class="help" id="generatephrase-text-password-strength"></p>
+							</div>
+
+							<div class="field is-grouped">
+								<div class="control">
+									<button class="button is-link" id="generatephrase-button-regenerate">
+										<span class="icon">
+											<i class="fas fa-sync-alt"></i>
+										</span>
+										<span>Generate</span>
+									</button>
+								</div>
+								<div class="control">
+									<button class="button is-link is-light" id="generatephrase-button-copy">
+										<span class="icon">
+											<i class="far fa-copy"></i>
+										</span>
+										<span>Copy</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="column">
 						<h2 class="heading">Strength Checker</h2>
 
