@@ -17,9 +17,9 @@ $("generate-button-regenerate").addEventListener("click", function () {
 	removeColor("generate-text-password-strength");
 
 	$("generate-text-password").value = pass.password;
-	$("generate-text-password").classList.add(pass.strengthColor);
+	$("generate-text-password").classList.add(pass.strengthIsColor);
 	$("generate-text-password-strength").innerHTML = pass.strengthText;
-	$("generate-text-password-strength").classList.add(pass.strengthColor);
+	$("generate-text-password-strength").classList.add(pass.strengthIsColor);
 });
 
 $("strength-button-check").addEventListener("click", function () {
@@ -29,11 +29,15 @@ $("strength-button-check").addEventListener("click", function () {
 	removeColor("strength-text-password-strength");
 
 	$("strength-text-password").value = pass.password;
-	$("strength-text-password").classList.add(pass.strengthColor);
+	$("strength-text-password").classList.add(pass.strengthIsColor);
 	$("strength-text-password-strength").innerHTML = pass.strengthText;
-	$("strength-text-password-strength").classList.add(pass.strengthColor);
+	$("strength-text-password-strength").classList.add(pass.strengthIsColor);
 
+	console.log($("strength-check-advanced").checked)
 
+	if ($("strength-check-advanced").checked) {	
+		$("strength-text-content").innerHTML = makeContent(pass)
+	}
 });
 
 function generatePassword() {
@@ -89,25 +93,26 @@ function scoreToStr(zxcvbn) {
 	switch (zxcvbn.score) {
 		case 0:
 			zxcvbn.strengthText = "Way Too Guessable";
-			zxcvbn.strengthColor = "is-danger";
+			zxcvbn.strengthRawColor = "danger";
 			break;
 		case 1:
 			zxcvbn.strengthText = "Very Guessable";
-			zxcvbn.strengthColor = "is-danger";
+			zxcvbn.strengthRawColor = "danger";
 			break;
 		case 2:
 			zxcvbn.strengthText = "Somewhat Guessable";
-			zxcvbn.strengthColor = "is-danger";
+			zxcvbn.strengthRawColor = "danger";
 			break;
 		case 3:
 			zxcvbn.strengthText = "Pretty Safe";
-			zxcvbn.strengthColor = "is-success";
+			zxcvbn.strengthRawColor = "success";
 			break;
 		case 4:
 			zxcvbn.strengthText = "Very Safe";
-			zxcvbn.strengthColor = "is-success";
+			zxcvbn.strengthRawColor = "success";
 			break;
 	}
+	zxcvbn.strengthIsColor = "is-" + zxcvbn.strengthRawColor;
 	return zxcvbn;
 }
 
@@ -118,4 +123,38 @@ function removeColor(id) {
 			$(id).classList.remove($(id).classList[i]);
 		}
 	}
+}
+
+function makeContent(zxcvbn) {
+	let output = "";
+
+	/* if ("strengthText" in zxcvbn) {
+		output += `<p><strong class="has-text-${zxcvbn.strengthRawColor}">Your Password is ${zxcvbn.strengthText}</strong></p>`
+	}
+
+	output += `<p>It would take <strong>${zxcvbn.crack_times_display.online_no_throttling_10_per_second}</strong> to crack.</p>` */
+	
+
+	output += "<table>"
+	output += "<thead><tr><td><strong>Scenario</strong></td><td><strong>Crack Time</strong></td></thead>"
+	output += `<tr><td>Online Attack, Throttled</td><td>${zxcvbn.crack_times_display.online_no_throttling_10_per_second}</td></tr>`
+	output += `<tr><td>Online Attack, Unthrottled</td><td>${zxcvbn.crack_times_display.online_no_throttling_10_per_second}</td></tr>`
+	output += `<tr><td>Offline Attack, Slow Hash</td><td>${zxcvbn.crack_times_display.online_no_throttling_10_per_second}</td></tr>`
+	output += `<tr><td>Offline Attack, Fast Hash</td><td>${zxcvbn.crack_times_display.online_no_throttling_10_per_second}</td></tr>`
+	output += "</table>"
+
+	if (zxcvbn.feedback.warning != "") {
+		output += `<p><strong>Warning:</strong> ${zxcvbn.feedback.warning}.</p>`
+	}
+
+	if (zxcvbn.feedback.suggestions.length > 0) {
+		output += `<p><strong>Suggestions:</strong></p><ul>`
+		for (const element of zxcvbn.feedback.suggestions) {
+			output += `<li>${element}</li>`
+		}
+		output += "</ul>"
+	}
+
+	$("strength-text-content").innerHTML = output;
+	return output;
 }

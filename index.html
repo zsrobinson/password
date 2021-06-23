@@ -19,52 +19,57 @@
 					</span>
 					Password Utilities
 				</h1>
-				<p class="subtitle">Created by Zachary Robinson</p>
-				
+				<p class="subtitle">A Collection of Tools to Improve Your Online Security</p>
+
 				<div class="columns">
 					<div class="column">
-
 						<h2 class="heading">Password Generator</h2>
 
 						<div class="block">
 							<div class="field">
 								<label class="label">Length</label>
 								<div class="control">
-									<input class="input" type="text" placeholder="Enter the length of your desired password..." id="generate-text-length" value="16" />
+									<input
+										class="input"
+										type="text"
+										placeholder="Enter the length of your desired password..."
+										id="generate-text-length"
+										value="16"
+									/>
 								</div>
 							</div>
 						</div>
-		
+
 						<div class="block">
 							<label class="checkbox">
 								<input type="checkbox" id="generate-check-upper" checked />
-								Include Uppercase Letters ( A-Z )
-							</label><br>
+								Include Uppercase Letters ( A-Z ) </label
+							><br />
 							<label class="checkbox">
 								<input type="checkbox" id="generate-check-lower" checked />
-								Include Lowercase Letters ( a-z )
-							</label><br>
+								Include Lowercase Letters ( a-z ) </label
+							><br />
 							<label class="checkbox">
 								<input type="checkbox" id="generate-check-numbers" checked />
-								Include Numbers ( 0-9 )
-							</label><br>
+								Include Numbers ( 0-9 ) </label
+							><br />
 							<label class="checkbox">
 								<input type="checkbox" id="generate-check-symbols" checked />
 								Include Common Symbols ( !@#$%^&*-_=+? )
 							</label>
 						</div>
-		
+
 						<div class="block">
 							<label class="checkbox">
 								<input type="checkbox" id="generate-check-similar" />
-								Exclude Similar Characters ( iIl1oO0 )
-							</label><br>
+								Exclude Similar Characters ( iIl1oO0 ) </label
+							><br />
 							<label class="checkbox">
 								<input type="checkbox" id="generate-check-extraSymbols" />
-								Include All ASCII Symbols
-							</label><br>
+								Include All ASCII Symbols </label
+							><br />
 						</div>
-						
+
 						<div class="block">
 							<div class="field">
 								<div class="control">
@@ -72,7 +77,7 @@
 								</div>
 								<p class="help" id="generate-text-password-strength"></p>
 							</div>
-			
+
 							<div class="field is-grouped">
 								<div class="control">
 									<button class="button is-link" id="generate-button-regenerate">
@@ -92,10 +97,8 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 					<div class="column">
-
 						<h2 class="heading">Strength Checker</h2>
 
 						<div class="block">
@@ -106,7 +109,16 @@
 								</div>
 								<p class="help" id="strength-text-password-strength"></p>
 							</div>
+						</div>
 
+						<div class="block">
+							<label class="checkbox">
+								<input type="checkbox" id="strength-check-advanced" />
+								Advanced Information</label
+							><br />
+						</div>
+
+						<div class="block">
 							<div class="control">
 								<button class="button is-link" id="strength-button-check">
 									<span class="icon">
@@ -117,11 +129,20 @@
 							</div>
 						</div>
 
+						<div class="block">
+							<div class="content" id="strength-text-content"></div>
+						</div>
 					</div>
 				</div>
-
-				
 			</div>
 		</section>
+		<div class="footer">
+			<div class="content has-text-centered">
+				<p>
+					This project was developed by Zachary Robinson. View the source code on
+					<a href="https://github.com/zsrobinson/passwordUtilities">Github</a>.
+				</p>
+			</div>
+		</div>
 	</body>
 </html>
