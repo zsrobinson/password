@@ -255,15 +255,24 @@ $("generatephrase-button-copy").addEventListener("click", function () {
 });
 
 $("generatephrase-button-regenerate").addEventListener("click", function () {
+	console.log("a")
 	let pass = generatePassphrase();
 
+	console.log("b")
+
 	removeColor("generatephrase-text-password");
+	console.log("c")
 	removeColor("generatephrase-text-password-strength");
+	console.log("d")
 
 	$("generatephrase-text-password").value = pass.password;
+	console.log("e")
 	$("generatephrase-text-password").classList.add(pass.strengthIsColor);
+	console.log("f")
 	$("generatephrase-text-password-strength").innerHTML = pass.strengthText;
+	console.log("g")
 	$("generatephrase-text-password-strength").classList.add(pass.strengthIsColor);
+	console.log("h")
 });
 
 $("strength-button-check").addEventListener("click", function () {
