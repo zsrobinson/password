@@ -7,19 +7,14 @@
 		<link rel="stylesheet" href="assets\bulma.css" />
 		<link rel="stylesheet" href="assets\fontawesome-free-5.15.3-web\css\all.css" />
 		<link rel="stylesheet" href="assets\bulma-prefers-dark.css" />
-		<script type="text/javascript" src="assets\zxcvbn.js"></script>
+		<script type="text/javascript" src="zxcvbn.js"></script>
 		<script type="text/javascript" src="script.js" defer></script>
 		<title>Password Utilities</title>
 	</head>
 	<body>
 		<section class="section">
 			<div class="container">
-				<h1 class="title">
-					<span class="icon">
-						<i class="fas fa-key"></i>
-					</span>
-					Password Utilities
-				</h1>
+				<h1 class="title">Password Utilities</h1>
 				<p class="subtitle">A Collection of Tools to Improve Your Online Security</p>
 
 				<div class="columns">
@@ -119,6 +114,25 @@
 						</div>
 
 						<div class="block">
+							<label class="checkbox">
+								<input type="checkbox" id="generatephrase-check-wordsAlpha" checked/>
+								Use Default Word List </label
+							><br />
+							<label class="checkbox">
+								<input type="checkbox" id="generatephrase-check-usTvAndFilm" />
+								Use U.S. Film and TV </label
+							><br />
+							<label class="checkbox">
+								<input type="checkbox" id="generatephrase-check-englishWikipedia" />
+								Use English Wikipedia </label
+							><br />
+						</div>
+
+						<div class="block">
+							<label class="checkbox">
+								<input type="checkbox" id="generatephrase-check-common" />
+								Use More Common Words </label
+							><br />
 							<label class="checkbox">
 								<input type="checkbox" id="generatephrase-check-capitalize" />
 								Capitalize Some Words </label
