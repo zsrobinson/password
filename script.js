@@ -113,9 +113,9 @@ function generatePassphrase() {
 	for (let list in options.lists) {
 		if (options.lists[list]) {
 			if (options.common) {
-				words = words.concat(wordLists[list].slice(0,5000))
+				words = words.concat(wordLists[list].slice(0, 5000));
 			} else {
-				words = words.concat(wordLists[list])
+				words = words.concat(wordLists[list]);
 			}
 		}
 	}
@@ -123,7 +123,7 @@ function generatePassphrase() {
 		return { password: "", strengthText: "Please select at least one word list." };
 	}
 
-	console.log("generated words list")
+	console.log("generated words list");
 
 	let passwordWords = [];
 	for (let i = 0; i < options.length; i++) {
@@ -131,7 +131,7 @@ function generatePassphrase() {
 	}
 	let password = passwordWords.join("-");
 
-	console.log("created password")
+	console.log("created password");
 
 	if (options.l33t) {
 		for (let i = 0; i < Math.floor(password.length / 4); i++) {
@@ -143,7 +143,7 @@ function generatePassphrase() {
 		}
 	}
 
-	console.log("l33ted")
+	console.log("l33ted");
 
 	if (options.capitalize) {
 		for (let i = 0; i < Math.floor(password.length / 4); i++) {
@@ -153,9 +153,19 @@ function generatePassphrase() {
 		}
 	}
 
-	console.log("capitalized")
+	console.log("capitalized");
 
-	return scoreToStr(zxcvbn(password));
+	console.log(password);
+
+	const qwer = zxcvbn(password);
+
+	console.log(qwer);
+
+	const uiop = scoreToStr(qwer);
+
+	console.log(uiop);
+
+	return uiop;
 }
 
 function scoreToStr(zxcvbn) {
@@ -255,24 +265,24 @@ $("generatephrase-button-copy").addEventListener("click", function () {
 });
 
 $("generatephrase-button-regenerate").addEventListener("click", function () {
-	console.log("a")
+	console.log("a");
 	let pass = generatePassphrase();
 
-	console.log("b")
+	console.log("b");
 
 	removeColor("generatephrase-text-password");
-	console.log("c")
+	console.log("c");
 	removeColor("generatephrase-text-password-strength");
-	console.log("d")
+	console.log("d");
 
 	$("generatephrase-text-password").value = pass.password;
-	console.log("e")
+	console.log("e");
 	$("generatephrase-text-password").classList.add(pass.strengthIsColor);
-	console.log("f")
+	console.log("f");
 	$("generatephrase-text-password-strength").innerHTML = pass.strengthText;
-	console.log("g")
+	console.log("g");
 	$("generatephrase-text-password-strength").classList.add(pass.strengthIsColor);
-	console.log("h")
+	console.log("h");
 });
 
 $("strength-button-check").addEventListener("click", function () {
@@ -301,4 +311,4 @@ $("generatephrase-check-common").addEventListener("change", function () {
 	} else {
 		$("generatephrase-check-wordsAlpha").disabled = false;
 	}
-})
+});
