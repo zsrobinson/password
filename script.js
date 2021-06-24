@@ -123,11 +123,15 @@ function generatePassphrase() {
 		return { password: "", strengthText: "Please select at least one word list." };
 	}
 
+	console.log("generated words list")
+
 	let passwordWords = [];
 	for (let i = 0; i < options.length; i++) {
 		passwordWords.push(words[Math.floor(Math.random() * words.length)]);
 	}
 	let password = passwordWords.join("-");
+
+	console.log("created password")
 
 	if (options.l33t) {
 		for (let i = 0; i < Math.floor(password.length / 4); i++) {
@@ -139,6 +143,8 @@ function generatePassphrase() {
 		}
 	}
 
+	console.log("l33ted")
+
 	if (options.capitalize) {
 		for (let i = 0; i < Math.floor(password.length / 4); i++) {
 			const char = Math.floor(Math.random() * password.length);
@@ -146,6 +152,8 @@ function generatePassphrase() {
 			password = password.substr(0, char) + replace + password.substr(char + replace.length);
 		}
 	}
+
+	console.log("capitalized")
 
 	return scoreToStr(zxcvbn(password));
 }
