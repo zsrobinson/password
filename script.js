@@ -255,7 +255,7 @@ $("generatephrase-button-copy").addEventListener("click", function () {
 });
 
 $("generatephrase-button-regenerate").addEventListener("click", function () {
-	pass = generatePassphrase();
+	let pass = generatePassphrase();
 
 	removeColor("generatephrase-text-password");
 	removeColor("generatephrase-text-password-strength");
@@ -267,7 +267,7 @@ $("generatephrase-button-regenerate").addEventListener("click", function () {
 });
 
 $("strength-button-check").addEventListener("click", function () {
-	pass = scoreToStr(zxcvbn($("strength-text-password").value));
+	let pass = scoreToStr(zxcvbn($("strength-text-password").value));
 
 	removeColor("strength-text-password");
 	removeColor("strength-text-password-strength");
