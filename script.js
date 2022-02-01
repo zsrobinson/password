@@ -15,12 +15,11 @@ getWordLists();
 
 async function getWordLists() {
 	let output = {};
-	const links = ["wordLists/englishWikipedia.txt", "wordLists/usTvAndFilm.txt", "wordLists/wordsAlpha.txt"];
+	const links = ["wordLists/englishWikipedia.json", "wordLists/usTvAndFilm.json", "wordLists/google-10000-english-usa-no-swears-long.json", "wordLists/google-10000-english-usa-no-swears-medium.json", "wordLists/google-10000-english-usa-no-swears-short.json"];
 	for (let link of links) {
 		const response = await fetch(link);
-		const text = await response.text();
-		const array = text.split("\r\n");
-		wordLists[link.substring(10, link.length - 4)] = array;
+		const data = await response.json();
+		wordLists[link.substring(10, link.length - 5)] = data;
 	}
 }
 
@@ -100,7 +99,6 @@ function generatePassphrase() {
 	const options = {
 		length: $("generatephrase-text-length").value,
 		lists: {
-			wordsAlpha: $("generatephrase-check-wordsAlpha").checked,
 			usTvAndFilm: $("generatephrase-check-usTvAndFilm").checked,
 			englishWikipedia: $("generatephrase-check-englishWikipedia").checked,
 		},
@@ -273,15 +271,3 @@ $("strength-button-check").addEventListener("click", function () {
 		$("strength-text-content").innerHTML = makeContent(pass);
 	}
 });
-
-$("generatephrase-check-common").addEventListener("change", function () {
-	if ($("generatephrase-check-common").checked) {
-		$("generatephrase-check-wordsAlpha").checked = false;
-		$("generatephrase-check-wordsAlpha").disabled = true;
-		if (!($("generatephrase-check-usTvAndFilm").checked || $("generatephrase-check-englishWikipedia").checked)) {
-			$("generatephrase-check-usTvAndFilm").checked = true;
-		}
-	} else {
-		$("generatephrase-check-wordsAlpha").disabled = false;
-	}
-})

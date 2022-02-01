@@ -7,14 +7,8 @@ film = "you,i,to,that,it,me,what,this,know,i'm,no,have,my,don't,just,not,do,be,y
 wikipedia = wikipedia.split(",")
 film = film.split(",")
 
-f=open("wordLists/englishWikipedia.txt", 'w')
-for i in wikipedia:
-	f.write(i)
-	f.write("\n")
-f.close
+with open("englishWikipedia.json", 'w') as f:
+	f.write(json.dumps(wikipedia))
 
-f=open("wordLists/usTvAndFilm.txt", 'w')
-for i in film:
-	f.write(i)
-	f.write("\n")
-f.close
+with open("usTvAndFilm.json", 'w') as f:
+	f.write(json.dumps(film))
