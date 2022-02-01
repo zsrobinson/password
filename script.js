@@ -247,16 +247,8 @@ $("generatephrase-button-copy").addEventListener("click", function () {
 });
 
 $("generatephrase-button-regenerate").addEventListener("click", function () {
-	try {
-		let pass = generatePassphrase();
-	}
-	catch (e) {
-		console.log("Error", e.stack);
-		console.log("Error", e.name);
-		console.log("Error", e.message);
-	}
+	let pass = generatePassphrase();
 	
-
 	removeColor("generatephrase-text-password");
 	removeColor("generatephrase-text-password-strength");
 
