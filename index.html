@@ -5,7 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="assets\bulma.css" />
-		<link rel="stylesheet" href="assets\fontawesome-free-5.15.3-web\css\all.css" />
+		<link
+			rel="stylesheet"
+			href="assets\fontawesome-free-5.15.3-web\css\all.css"
+		/>
 		<link rel="stylesheet" href="assets\bulma-prefers-dark.css" />
 		<script type="text/javascript" src="zxcvbn.js"></script>
 		<script type="text/javascript" src="script.js" defer></script>
@@ -15,7 +18,9 @@
 		<section class="section">
 			<div class="container">
 				<h1 class="title">Password Utilities</h1>
-				<p class="subtitle">A Collection of Tools to Improve Your Online Security</p>
+				<p class="subtitle">
+					A Collection of Tools to Improve Your Online Security
+				</p>
 
 				<div class="columns">
 					<div class="column">
@@ -38,30 +43,52 @@
 
 						<div class="block">
 							<label class="checkbox">
-								<input type="checkbox" id="generate-check-upper" checked />
+								<input
+									type="checkbox"
+									id="generate-check-upper"
+									checked
+								/>
 								Include Uppercase Letters ( A-Z ) </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generate-check-lower" checked />
+								<input
+									type="checkbox"
+									id="generate-check-lower"
+									checked
+								/>
 								Include Lowercase Letters ( a-z ) </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generate-check-numbers" checked />
+								<input
+									type="checkbox"
+									id="generate-check-numbers"
+									checked
+								/>
 								Include Numbers ( 0-9 ) </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generate-check-symbols" checked />
+								<input
+									type="checkbox"
+									id="generate-check-symbols"
+									checked
+								/>
 								Include Common Symbols ( !@#$%^&*-_=+? )
 							</label>
 						</div>
 
 						<div class="block">
 							<label class="checkbox">
-								<input type="checkbox" id="generate-check-similar" />
+								<input
+									type="checkbox"
+									id="generate-check-similar"
+								/>
 								Exclude Similar Characters ( iIl1oO0 ) </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generate-check-extraSymbols" />
+								<input
+									type="checkbox"
+									id="generate-check-extraSymbols"
+								/>
 								Include All ASCII Symbols </label
 							><br />
 						</div>
@@ -69,14 +96,26 @@
 						<div class="block">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" value="" id="generate-text-password" readonly />
+									<input
+										class="input"
+										type="text"
+										value=""
+										id="generate-text-password"
+										readonly
+									/>
 								</div>
-								<p class="help" id="generate-text-password-strength"></p>
+								<p
+									class="help"
+									id="generate-text-password-strength"
+								></p>
 							</div>
 
 							<div class="field is-grouped">
 								<div class="control">
-									<button class="button is-link" id="generate-button-regenerate">
+									<button
+										class="button is-link"
+										id="generate-button-regenerate"
+									>
 										<span class="icon">
 											<i class="fas fa-sync-alt"></i>
 										</span>
@@ -84,7 +123,10 @@
 									</button>
 								</div>
 								<div class="control">
-									<button class="button is-link is-light" id="generate-button-copy">
+									<button
+										class="button is-link is-light"
+										id="generate-button-copy"
+									>
 										<span class="icon">
 											<i class="far fa-copy"></i>
 										</span>
@@ -115,30 +157,52 @@
 
 						<div class="block">
 							<label class="checkbox">
-								<input type="checkbox" id="generatephrase-check-google" checked />
+								<input
+									type="checkbox"
+									id="generatephrase-check-google"
+									checked
+								/>
 								Use Default Word List </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generatephrase-check-usTvAndFilm" checked />
+								<input
+									type="checkbox"
+									id="generatephrase-check-usTvAndFilm"
+									checked
+								/>
 								Use U.S. Film and TV </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generatephrase-check-englishWikipedia" checked />
+								<input
+									type="checkbox"
+									id="generatephrase-check-englishWikipedia"
+									checked
+								/>
 								Use English Wikipedia </label
 							><br />
 						</div>
 
 						<div class="block">
 							<label class="checkbox">
-								<input type="checkbox" id="generatephrase-check-common" checked />
+								<input
+									type="checkbox"
+									id="generatephrase-check-common"
+									checked
+								/>
 								Use More Common Words </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generatephrase-check-capitalize" />
+								<input
+									type="checkbox"
+									id="generatephrase-check-capitalize"
+								/>
 								Capitalize Some Words </label
 							><br />
 							<label class="checkbox">
-								<input type="checkbox" id="generatephrase-check-l33t" />
+								<input
+									type="checkbox"
+									id="generatephrase-check-l33t"
+								/>
 								L33t Speak Some Words </label
 							><br />
 						</div>
@@ -146,14 +210,26 @@
 						<div class="block">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" value="" id="generatephrase-text-password" readonly />
+									<input
+										class="input"
+										type="text"
+										value=""
+										id="generatephrase-text-password"
+										readonly
+									/>
 								</div>
-								<p class="help" id="generatephrase-text-password-strength"></p>
+								<p
+									class="help"
+									id="generatephrase-text-password-strength"
+								></p>
 							</div>
 
 							<div class="field is-grouped">
 								<div class="control">
-									<button class="button is-link" id="generatephrase-button-regenerate">
+									<button
+										class="button is-link"
+										id="generatephrase-button-regenerate"
+									>
 										<span class="icon">
 											<i class="fas fa-sync-alt"></i>
 										</span>
@@ -161,7 +237,10 @@
 									</button>
 								</div>
 								<div class="control">
-									<button class="button is-link is-light" id="generatephrase-button-copy">
+									<button
+										class="button is-link is-light"
+										id="generatephrase-button-copy"
+									>
 										<span class="icon">
 											<i class="far fa-copy"></i>
 										</span>
@@ -179,22 +258,36 @@
 							<div class="field">
 								<label class="label">Password</label>
 								<div class="control">
-									<input class="input" type="text" placeholder="Enter a password..." id="strength-text-password" />
+									<input
+										class="input"
+										type="text"
+										placeholder="Enter a password..."
+										id="strength-text-password"
+									/>
 								</div>
-								<p class="help" id="strength-text-password-strength"></p>
+								<p
+									class="help"
+									id="strength-text-password-strength"
+								></p>
 							</div>
 						</div>
 
 						<div class="block">
 							<label class="checkbox">
-								<input type="checkbox" id="strength-check-advanced" />
+								<input
+									type="checkbox"
+									id="strength-check-advanced"
+								/>
 								Advanced Information</label
 							><br />
 						</div>
 
 						<div class="block">
 							<div class="control">
-								<button class="button is-link" id="strength-button-check">
+								<button
+									class="button is-link"
+									id="strength-button-check"
+								>
 									<span class="icon">
 										<i class="fas fa-search"></i>
 									</span>
@@ -204,7 +297,10 @@
 						</div>
 
 						<div class="block">
-							<div class="content" id="strength-text-content"></div>
+							<div
+								class="content"
+								id="strength-text-content"
+							></div>
 						</div>
 					</div>
 				</div>
@@ -213,8 +309,11 @@
 		<div class="footer">
 			<div class="content has-text-centered">
 				<p>
-					This project was developed by Zachary Robinson. View the source code on
-					<a href="https://github.com/zsrobinson/passwordUtilities">Github</a>.
+					This project was developed by Zachary Robinson. View the
+					source code on
+					<a href="https://github.com/zsrobinson/passwordUtilities"
+						>Github</a
+					>.
 				</p>
 			</div>
 		</div>

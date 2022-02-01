@@ -15,7 +15,11 @@ getWordLists();
 
 async function getWordLists() {
 	let output = {};
-	const links = ["wordLists/google.json", "wordLists/englishWikipedia.json", "wordLists/usTvAndFilm.json"];
+	const links = [
+		"wordLists/google.json",
+		"wordLists/englishWikipedia.json",
+		"wordLists/usTvAndFilm.json",
+	];
 	for (let link of links) {
 		const response = await fetch(link);
 		const data = await response.json();
@@ -51,16 +55,22 @@ function generatePassword() {
 	// make character set
 	let characterSet = [];
 	if (options.upper) {
-		characterSet = characterSet.concat(Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+		characterSet = characterSet.concat(
+			Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+		);
 	}
 	if (options.lower) {
-		characterSet = characterSet.concat(Array.from("abcdefghijklmnopqrstuvwxyz"));
+		characterSet = characterSet.concat(
+			Array.from("abcdefghijklmnopqrstuvwxyz")
+		);
 	}
 	if (options.numbers) {
 		characterSet = characterSet.concat(Array.from("0123456789"));
 	}
 	if (options.extraSymbols) {
-		characterSet = characterSet.concat(Array.from("!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"));
+		characterSet = characterSet.concat(
+			Array.from("!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~")
+		);
 	} else if (options.symbols) {
 		characterSet = characterSet.concat(Array.from("!@#$%^&*-_=+?"));
 	}
@@ -72,13 +82,17 @@ function generatePassword() {
 	}
 
 	if (characterSet.length == 0) {
-		return { password: "", strengthText: "Please select at least one character type." };
+		return {
+			password: "",
+			strengthText: "Please select at least one character type.",
+		};
 	}
 
 	// generate the password
 	let password = "";
 	for (let i = 0; i < options.length; i++) {
-		password += characterSet[Math.floor(Math.random() * characterSet.length)];
+		password +=
+			characterSet[Math.floor(Math.random() * characterSet.length)];
 	}
 
 	return scoreToStr(zxcvbn(password));
@@ -101,7 +115,8 @@ function generatePassphrase() {
 		lists: {
 			google: $("generatephrase-check-google").checked,
 			usTvAndFilm: $("generatephrase-check-usTvAndFilm").checked,
-			englishWikipedia: $("generatephrase-check-englishWikipedia").checked,
+			englishWikipedia: $("generatephrase-check-englishWikipedia")
+				.checked,
 		},
 		common: $("generatephrase-check-common").checked,
 		capitalize: $("generatephrase-check-capitalize").checked,
@@ -112,14 +127,17 @@ function generatePassphrase() {
 	for (let list in options.lists) {
 		if (options.lists[list]) {
 			if (options.common) {
-				words = words.concat(wordLists[list].slice(0,5000))
+				words = words.concat(wordLists[list].slice(0, 5000));
 			} else {
-				words = words.concat(wordLists[list])
+				words = words.concat(wordLists[list]);
 			}
 		}
 	}
 	if (words.length == 0) {
-		return { password: "", strengthText: "Please select at least one word list." };
+		return {
+			password: "",
+			strengthText: "Please select at least one word list.",
+		};
 	}
 
 	let passwordWords = [];
@@ -132,8 +150,16 @@ function generatePassphrase() {
 		for (let i = 0; i < Math.floor(password.length / 4); i++) {
 			try {
 				const char = Math.floor(Math.random() * password.length);
-				const replace = l33tList[password[char]][Math.floor(Math.random() * l33tList[password[char]].length)];
-				password = password.substr(0, char) + replace + password.substr(char + replace.length);
+				const replace =
+					l33tList[password[char]][
+						Math.floor(
+							Math.random() * l33tList[password[char]].length
+						)
+					];
+				password =
+					password.substr(0, char) +
+					replace +
+					password.substr(char + replace.length);
 			} catch {}
 		}
 	}
@@ -142,7 +168,10 @@ function generatePassphrase() {
 		for (let i = 0; i < Math.floor(password.length / 4); i++) {
 			const char = Math.floor(Math.random() * password.length);
 			const replace = password[char].toUpperCase();
-			password = password.substr(0, char) + replace + password.substr(char + replace.length);
+			password =
+				password.substr(0, char) +
+				replace +
+				password.substr(char + replace.length);
 		}
 	}
 
@@ -178,7 +207,14 @@ function scoreToStr(zxcvbn) {
 }
 
 function removeColor(id) {
-	colorList = ["is-primary", "is-link", "is-info", "is-success", "is-warning", "is-danger"];
+	colorList = [
+		"is-primary",
+		"is-link",
+		"is-info",
+		"is-success",
+		"is-warning",
+		"is-danger",
+	];
 	for (let i = 0; i < $(id).classList.length; i++) {
 		if (colorList.includes($(id).classList[i])) {
 			$(id).classList.remove($(id).classList[i]);
@@ -190,7 +226,8 @@ function makeContent(zxcvbn) {
 	let output = "";
 
 	output += "<table>";
-	output += "<thead><tr><td><strong>Scenario</strong></td><td><strong>Crack Time</strong></td></thead>";
+	output +=
+		"<thead><tr><td><strong>Scenario</strong></td><td><strong>Crack Time</strong></td></thead>";
 	output += `<tr><td>Online Attack, Throttled</td><td>${zxcvbn.crack_times_display.online_throttling_100_per_hour}</td></tr>`;
 	output += `<tr><td>Online Attack, Unthrottled</td><td>${zxcvbn.crack_times_display.online_no_throttling_10_per_second}</td></tr>`;
 	output += `<tr><td>Offline Attack, Slow Hash</td><td>${zxcvbn.crack_times_display.offline_slow_hashing_1e4_per_second}</td></tr>`;
@@ -247,14 +284,16 @@ $("generatephrase-button-copy").addEventListener("click", function () {
 
 $("generatephrase-button-regenerate").addEventListener("click", function () {
 	let pass = generatePassphrase();
-	
+
 	removeColor("generatephrase-text-password");
 	removeColor("generatephrase-text-password-strength");
 
 	$("generatephrase-text-password").value = pass.password;
 	$("generatephrase-text-password").classList.add(pass.strengthIsColor);
 	$("generatephrase-text-password-strength").innerHTML = pass.strengthText;
-	$("generatephrase-text-password-strength").classList.add(pass.strengthIsColor);
+	$("generatephrase-text-password-strength").classList.add(
+		pass.strengthIsColor
+	);
 });
 
 $("strength-button-check").addEventListener("click", function () {
