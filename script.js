@@ -15,7 +15,7 @@ getWordLists();
 
 async function getWordLists() {
 	let output = {};
-	const links = ["wordLists/englishWikipedia.json", "wordLists/usTvAndFilm.json", "wordLists/google-10000-english-usa-no-swears-long.json", "wordLists/google-10000-english-usa-no-swears-medium.json", "wordLists/google-10000-english-usa-no-swears-short.json"];
+	const links = ["wordLists/google.json", "wordLists/englishWikipedia.json", "wordLists/usTvAndFilm.json"];
 	for (let link of links) {
 		const response = await fetch(link);
 		const data = await response.json();
@@ -99,6 +99,7 @@ function generatePassphrase() {
 	const options = {
 		length: $("generatephrase-text-length").value,
 		lists: {
+			google: $("generatephrase-check-google").checked,
 			usTvAndFilm: $("generatephrase-check-usTvAndFilm").checked,
 			englishWikipedia: $("generatephrase-check-englishWikipedia").checked,
 		},
